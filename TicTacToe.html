@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>Question 3</title>
+  </head>
+  <style>
+table{
+   background-color:#576879;
+   margin-left: auto;
+   margin-right: auto;
+   width:75%;
+}
+td{
+  width:30%;
+  height:30%;
+}
+input{
+  width:100%;
+  height:100%;
+  font-size:90px;
+  border:0px;
+  background-color:#767FA9;
+  color:#FFFFFF;
+}
+input:hover{
+  background-color:#505050;
+}
+.centering{
+  text-align: center;
+}
+button{
+  padding:13px;
+  background-color:#576879;
+  border:1px;
+  color:#FFFFFF;
+  font-size:100%;
+}
+button:hover{
+  background-color:#00aaaa;
+}
+h1{
+  color:#576879;
+}
+  </style>
+ <script>
+     var character = "O";	 
+	 
+	 //sets the button value to either x or o and disables the button.
+	 //nested if loops for all buttons
+  function insert(x, character){
+     if(x==1){
+     var box1 = document.getElementById("1");	 
+	 box1.value = character;
+	 box1.disabled=true;
+	 }
+     else if(x==2){
+     var box2 = document.getElementById("2");	 
+	 box2.value = character;
+	 box2.disabled=true;
+	 }
+     else if(x==3){
+     var box3 = document.getElementById("3");	 
+	 box3.value = character;
+	 box3.disabled=true;
+	 }	 
+     else if(x==4){
+     var box4 = document.getElementById("4");	 
+	 box4.value = character;
+	 box4.disabled=true;
+	 }	 
+     else if(x==5){
+     var box5 = document.getElementById("5");	 
+	 box5.value = character;
+	 box5.disabled=true;
+	 }
+     else if(x==6){
+     var box6 = document.getElementById("6");	 
+	 box6.value = character;
+	 box6.disabled=true;
+	 }
+     else if(x==7){
+     var box7 = document.getElementById("7");	 
+	 box7.value = character;
+	 box7.disabled=true;
+	 }
+     else if(x==8){
+     var box8 = document.getElementById("8");	 
+	 box8.value = character;
+	 box8.disabled=true;
+	 }
+     else if(x==9){
+     var box9 = document.getElementById("9");	 
+	 box9.value = character;
+	 box9.disabled=true;
+	 }
+     TicTacToe();	 
+  }
+  	 //changes noughts and crosses around when each game starts
+     function ticTac(button) {
+	     if (character=="X") {
+         character="O";
+         insert(button, character);
+        }
+         else if (character=="O") {
+         character="X";
+         insert(button, character);
+        }
+	}
+	
+	//sets the boxs value to "", acting as a reset.
+	 function reset(){
+	     var box1 = document.getElementById("1");
+         var box2 = document.getElementById("2");
+         var box3 = document.getElementById("3");
+         var box4 = document.getElementById("4");
+         var box5 = document.getElementById("5");
+         var box6 = document.getElementById("6");
+         var box7 = document.getElementById("7");
+         var box8 = document.getElementById("8");
+         var box9 = document.getElementById("9");
+		 //value is of boxes is then reset to "" and 
+		 //no longer disabled.
+		 box1.value="";
+		 box2.value="";
+		 box3.value="";
+		 box4.value="";
+		 box5.value="";
+		 box6.value="";
+		 box7.value="";
+		 box8.value="";
+		 box9.value="";
+		 box1.disabled=false;
+		 box2.disabled=false;
+		 box3.disabled=false;
+		 box4.disabled=false;
+		 box5.disabled=false;
+		 box6.disabled=false;
+		 box7.disabled=false;
+		 box8.disabled=false;
+		 box9.disabled=false;	 
+		
+	    }
+		
+		//alerts the page that there is a winner
+	 function winner(xY){	 
+	     alert(xY + " " + "wins.");
+		 reset();
+	 
+	 }	
+		
+		//all ways of winning with tic-tac-toe using if/else-if statements.
+		//winner function is used when on if/else-if statement conidition is met.
+	 function TicTacToe(){
+	     var box1 = document.getElementById("1").value;
+	     var box2 = document.getElementById("2").value;
+		 var box3 = document.getElementById("3").value;
+		 var box4 = document.getElementById("4").value;
+		 var box5 = document.getElementById("5").value;
+		 var box6 = document.getElementById("6").value;
+		 var box7 = document.getElementById("7").value;
+		 var box8 = document.getElementById("8").value;
+	     var box9 = document.getElementById("9").value;
+		 
+		 if (((box1=="X") || (box1=="O")) && ((box1 == box2) && (box2 == box3))){
+		     winner(box1);
+		 }
+		 else if (((box4=="X") || (box4=="O")) && ((box4 == box5) && (box5 == box6))){
+		     winner(box4);
+		 }
+		 else if (((box7=="X") || (box7=="O")) && ((box7 == box8) && (box8 == box9))){
+		     winner(box7);
+		 }
+		 else if (((box3=="X") || (box3=="O")) && ((box3 == box6) && (box6 == box9))){
+		     winner(box3);
+		 }		 
+		 else if (((box1=="X") || (box1=="O")) && ((box1 == box4) && (box4 == box7))){
+		     winner(box1);
+		 }		 
+		 else if (((box2=="X") || (box2=="O")) && ((box2 == box5) && (box5 == box8))){
+		     winner(box2);
+		 }		 
+		 else if (((box1=="X") || (box1=="O")) && ((box1 == box5) && (box5 == box9))){
+		     winner(box1);
+		 }		 
+		 else if (((box3=="X") || (box3=="O")) && ((box3 == box5) && (box5 == box7))){
+		     winner(box3);
+		 }	
+	 }
+     
+ </script>
+ <body>
+ <!-- div class used to center text. -->
+ <div class="centering">
+ <h1>Tic Tac Toe</h1>
+ </div>
+  <table id="myTable">
+  <tr>
+  <!-- Buttons acts as tic-tac-toe layed in a table to make a 3x3. -->
+  <td><input type="button" id="1" onclick="ticTac(1)" value=""/></td>
+  <td><input type="button" id="2" onclick="ticTac(2)" value=""/></td>
+  <td><input type="button" id="3" onclick="ticTac(3)" value=""/></td>
+  </tr>
+  <tr>
+  <td><input type="button" id="4" onclick="ticTac(4)" value=""/></td>
+  <td><input type="button" id="5" onclick="ticTac(5)" value=""/></td>
+  <td><input type="button" id="6" onclick="ticTac(6)" value=""/></td>
+  </tr>
+  <tr>
+  <td><input type="button" id="7" onclick="ticTac(7)" value=""/></td>
+  <td><input type="button" id="8" onclick="ticTac(8)" value=""/></td>
+  <td><input type="button" id="9" onclick="ticTac(9)" value=""/></td>
+  </tr>
+  </table>
+   <!-- Center reset button. -->
+  <div class="centering"> 
+  <button onclick="reset()">Reset</button>
+  </div>
+  
+ </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>Question 1</title>
+  <style>
+  table, th, td { border: solid 1px;}
+  table {border-collapse: collapse; width: 30%; counter-reset: rowNumber;}
+  table tr:not(:first-child){counter-increment: rowNumber;}
+  table tr td:first-child::before{content: counter(rowNumber); min-width: 1em; margin-right: 0.5em;}
+  tr {background: #7a6c3d;}
+  th {background: #9b9e9c}
+.button {
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  margin: 10px 20px;
+  cursor: pointer;
+}
+.button1 {
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 15px;
+  margin: 2px 2px;
+  cursor: pointer;
+}
+  </style>
+  <script>
+  function update()
+  {
+     var name = document.getElementById("name").value;
+	 var age = document.getElementById("age").value;
+     var join = document.getElementById("join").value;
+	 var feet = document.getElementById("feet").value;
+	 var inches = document.getElementById("inches").value;
+	 var height = feet + inches ;
+	 
+	 var sdate = new Date(document.getElementById("join").value);
+	 var startDate = sdate.getFullYear();
+	 var rdate = new Date(2020,01,01);
+	 var reqdate = rdate.getFullYear();
+	 
+	 var table = document.getElementById("myTable");
+	
+	 if(age < 18 || age > 60 || startDate < reqdate){
+	 alert("age must be between 18-60 and start date should in 2020");
+	 return;}
+	 
+	 var row = table.insertRow(-1);
+	 
+	 var cell1 = row.insertCell(0);
+	 var cell2 = row.insertCell(1);
+	 var cell3 = row.insertCell(2);
+	 var cell4 = row.insertCell(3);
+	 var cell5 = row.insertCell(4);
+	 var cell6 = row.insertCell(0);
+	 
+	 cell1.innerHTML = name;
+	 cell2.innerHTML = age;
+	 cell3.innerHTML = join;
+	 cell4.innerHTML = height;
+	 cell5.innerHTML = '<input type = "button" value="Delete" onclick="deleteRow(this)">';
+	 
+  }
+  function reset(){
+     document.getElementById("myForm").reset();
+  }
+  function deleteRow(row){
+     var r = row.parentNode.parentNode.rowIndex;
+     document.getElementById("myTable").deleteRow(r);	 
+  }
+  
+  
+  </script>
+ </head>
+ <body>
+ <form id="myForm" onsubmit="event.preventDefault()">
+ Name: <input type="text" name="Name"  id="name" /> Age: <input type="number" name="age" id="age"/> Start Date: <input type="date" name="join" id="join"/><br />
+Height(feet): <select id="feet" name="Heights">
+<script>
+  	 for (var i=4; i <=6 ; i++){document.write("<option>" + i + "'" + "</option>");}
+</script>	
+ </select>
+ Height(inches): <select id="inches" name="Height">
+ <script>
+	 for (var i=0; i <=11 ; i++){document.write("<option>" + i + '"'+ "</option>");}
+ </script>
+ </select>
+ <input type="submit" class="button" value="Display" onclick="update() & reset()">
+ <input type="button" class="button1" onclick="reset()" value="Reset">
+ </form>
+ <h2>Registration</h2> 
+ <table id="myTable" border="1">
+  <tr> <th></th> <th>Name</th> <th>Age</th>  <th>Start Date</th> <th>Height</th>  <th></th> </tr>
+ </table>
+ </body>
+</html>

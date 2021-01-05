@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" />
+  <title>Question 2</title>
+ </head>
+ <style>
+.square{
+ height: 150px;
+ width: 150px;
+ text-align: center;
+ float:left;
+ }
+ p {
+    margin-bottom: 10px;
+}
+ </style>
+ <script>
+
+ var count = 1;
+ 
+  function createBox(){
+     
+     var heights = 5
+     var num = document.getElementById("name").value;
+	 
+	 for(var i =0; i<num;i++){
+	 	 var new_square = document.createElement("div");
+	     new_square.className = "square";
+		 new_square.innerHTML = count;
+		 new_square.style.background = randomColor();
+		 new_square.style.marginLeft= heights+"px";
+		 heights = heights * 2;
+		 document.body.appendChild(new_square);
+		 count++;
+	 }
+  }
+  
+  function randomColor(){
+  	 var x = Math.floor(Math.random() * 256);
+     var y = Math.floor(Math.random() * 256);
+     var z = Math.floor(Math.random() * 256);
+     var xyz = "rgb(" + x + "," + y + "," + z + ")";
+	 return xyz;
+  }
+
+  
+ </script>
+ <body>
+  <input type="text" name="Name"  id="name" /> 
+  <input type="submit" class="button" value="Draw" id="create" onclick="createBox()">
+  <p></p>
+ </body>
+</html>
